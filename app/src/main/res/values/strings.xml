@@ -1,3 +1,22 @@
 <resources>
     <string name="app_name">ShopApp</string>
+    <string name="email_hint">Email</string>
+    <string name="password_hint">Password</string>
+    <string name="log_in_button">Log in</string>
+    <string name="sign_up_button">Sign Up</string>
+    <string name="create_an_account_label">Create an account</string>
+    <string name="names_hint">Names</string>
+    <string name="last_names_hint">Last names</string>
+    <string name="conf_password_hint">Confirm password</string>
+    <string name="log_in_error">Something went wrong</string>
+    <string name="error__empty_name">We need your username to continue</string>
+    <string name="error__empty_email">We need your email to continue</string>
+    <string name="error__empty_password">You need a password to continue</string>
+    <string name="error__passwords_not_match">Your passwords do not match</string>
+    <string name="account_created_successfully">Account created successfully</string>
+    <string name="welcome">Welcome</string>
+    <string name="username_hint">Username</string>
+    <string name="last_name_hint">Last Name</string>
+    <string name="first_name_hint">First Name</string>
+    <string name="create_your_account">Create your account</string>
 </resources>
