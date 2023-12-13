@@ -48,7 +48,11 @@ class ProductListFragment: Fragment() {
         }
 
         productListAdapter.setProductClickListener {
-            Toast.makeText(requireContext(), "Product clicked", Toast.LENGTH_SHORT).show()
+            findNavController().navigate(
+                ProductListFragmentDirections.actionProductListFragmentToProductDetailFragment(
+                    productId = it.id
+                )
+            )
         }
     }
 
