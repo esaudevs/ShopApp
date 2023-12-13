@@ -1,4 +1,4 @@
-package com.esaudev.shopapp.sign_up
+package com.esaudev.shopapp.ui.sign_up
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -11,6 +11,7 @@ import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.receiveAsFlow
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -25,6 +26,25 @@ class SignUpViewModel @Inject constructor(
 
     private val _uiState: MutableStateFlow<SignUpUiState> = MutableStateFlow(SignUpUiState.Idle)
     val uiState: StateFlow<SignUpUiState> = _uiState
+
+    private val _passwordValidatorState: MutableStateFlow<PasswordValidatorState> = MutableStateFlow(
+        PasswordValidatorState()
+    )
+    val passwordValidatorState: StateFlow<PasswordValidatorState> = _passwordValidatorState
+
+    fun onPasswordsChanged(password: String, confPassword: String) {
+        viewModelScope.launch {
+            _passwordValidatorState.update { passwordValidatorState ->
+                passwordValidatorState.copy(
+                    passwordsMatch = password.isNotBlank() &&
+                            confPassword.isNotBlank() &&
+                            password == confPassword,
+                    passwordLength = password.length >= 8,
+                    passwordHasNumber = password.any { it.isDigit() }
+                )
+            }
+        }
+    }
 
     fun signUp(user: User, password: String, confPassword: String) {
         viewModelScope.launch {
@@ -49,6 +69,14 @@ class SignUpViewModel @Inject constructor(
             }
         }
     }
+}
+
+data class PasswordValidatorState(
+    val passwordsMatch: Boolean = false,
+    val passwordLength: Boolean = false,
+    val passwordHasNumber: Boolean = false
+) {
+    fun allRequirementsMet(): Boolean = passwordsMatch && passwordLength && passwordHasNumber
 }
 
 sealed class SignUpUiState {

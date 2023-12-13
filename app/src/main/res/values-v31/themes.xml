@@ -7,7 +7,6 @@
 
     <style name="Theme.ShopApp" parent="Base.Theme.ShopApp" />
     <style name="Theme.ShopApp.Starting" parent="@android:style/Theme.Light.NoTitleBar">
-        <!-- Set the splash screen background, animated icon, and animation duration. -->
-        <item name="android:windowBackground">@drawable/asset_splash_screen</item>
+        <item name="postSplashScreenTheme">@style/Theme.ShopApp</item>
     </style>
 </resources>

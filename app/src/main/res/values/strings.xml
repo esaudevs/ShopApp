@@ -19,4 +19,7 @@
     <string name="last_name_hint">Last Name</string>
     <string name="first_name_hint">First Name</string>
     <string name="create_your_account">Create your account</string>
+    <string name="password_requirement_one">Passwords match</string>
+    <string name="password_requirement_two">At least 8 characters</string>
+    <string name="password_requirement_three">Passwords match</string>
 </resources>

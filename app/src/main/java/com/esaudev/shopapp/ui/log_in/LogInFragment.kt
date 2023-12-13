@@ -1,4 +1,4 @@
-package com.esaudev.shopapp.log_in
+package com.esaudev.shopapp.ui.log_in
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -64,7 +64,7 @@ class LogInFragment: Fragment() {
                 viewModel.uiEvent.collect { uiEvent ->
                     when(uiEvent) {
                         is LoginUiEvent.LoggedIn -> {
-                            Toast.makeText(context, "Logged in", Toast.LENGTH_SHORT).show()
+                            findNavController().navigate(LogInFragmentDirections.actionLogInFragmentToProductListFragment())
                         }
                         is LoginUiEvent.Error -> {
                             Toast.makeText(context, getString(R.string.log_in_error), Toast.LENGTH_SHORT).show()

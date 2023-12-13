@@ -1,10 +1,13 @@
-package com.esaudev.shopapp.sign_up
+package com.esaudev.shopapp.ui.sign_up
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.content.ContextCompat
+import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
@@ -18,6 +21,7 @@ import com.esaudev.shopapp.domain.usecase.EMPTY_PASSWORD_ERROR
 import com.esaudev.shopapp.domain.usecase.EMPTY_USERNAME_ERROR
 import com.esaudev.shopapp.domain.usecase.PASSWORDS_NOT_MATCH_ERROR
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
@@ -38,8 +42,31 @@ class SignUpFragment: Fragment() {
 
         subscribeViewModel()
         subscribeClickListeners()
+        subscribePasswordValidator()
 
         return binding.root
+    }
+
+    private fun subscribePasswordValidator() {
+        binding.etPassword.addTextChangedListener {
+            if (!it.isNullOrBlank()) {
+                binding.gPasswordRequirements.visibility = View.VISIBLE
+            } else {
+                binding.gPasswordRequirements.visibility = View.GONE
+            }
+
+            viewModel.onPasswordsChanged(
+                password = it.toString(),
+                confPassword = binding.etConfPassword.text.toString()
+            )
+        }
+
+        binding.etConfPassword.addTextChangedListener {
+            viewModel.onPasswordsChanged(
+                password = binding.etPassword.text.toString(),
+                confPassword = it.toString()
+            )
+        }
     }
 
     private fun subscribeViewModel() {
@@ -98,6 +125,38 @@ class SignUpFragment: Fragment() {
                             binding.bSignUp.text = ""
                             binding.bSignUpProgress.visibility = View.VISIBLE
                         }
+                    }
+                }
+            }
+        }
+
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.passwordValidatorState.collect {
+                    binding.bSignUp.isEnabled = it.allRequirementsMet()
+                    Log.d("Test", it.allRequirementsMet().toString())
+                    if (it.passwordHasNumber) {
+                        binding.ivPasswordHasNumber.setColorFilter(ContextCompat.getColor(requireContext(), R.color.green))
+                        binding.tvPasswordHasNumber.setTextColor(ContextCompat.getColor(requireContext(), R.color.green))
+                    } else {
+                        binding.ivPasswordHasNumber.setColorFilter(ContextCompat.getColor(requireContext(), R.color.red))
+                        binding.tvPasswordHasNumber.setTextColor(ContextCompat.getColor(requireContext(), R.color.red))
+                    }
+
+                    if (it.passwordLength) {
+                        binding.ivPasswordLength.setColorFilter(ContextCompat.getColor(requireContext(), R.color.green))
+                        binding.tvPasswordLength.setTextColor(ContextCompat.getColor(requireContext(), R.color.green))
+                    } else {
+                        binding.ivPasswordLength.setColorFilter(ContextCompat.getColor(requireContext(), R.color.red))
+                        binding.tvPasswordLength.setTextColor(ContextCompat.getColor(requireContext(), R.color.red))
+                    }
+
+                    if (it.passwordsMatch) {
+                        binding.ivPasswordMatch.setColorFilter(ContextCompat.getColor(requireContext(), R.color.green))
+                        binding.tvPasswordMatch.setTextColor(ContextCompat.getColor(requireContext(), R.color.green))
+                    } else {
+                        binding.ivPasswordMatch.setColorFilter(ContextCompat.getColor(requireContext(), R.color.red))
+                        binding.tvPasswordMatch.setTextColor(ContextCompat.getColor(requireContext(), R.color.red))
                     }
                 }
             }

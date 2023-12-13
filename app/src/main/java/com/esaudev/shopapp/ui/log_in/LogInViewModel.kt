@@ -1,4 +1,4 @@
-package com.esaudev.shopapp.log_in
+package com.esaudev.shopapp.ui.log_in
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -27,6 +27,7 @@ class LoginViewModel @Inject constructor(
             _uiState.value = LoginUiState.Loading
             val token = authRepository.logIn(username, password)
             if (token.isSuccess) {
+                authRepository.saveUserToken(token.getOrNull()!!)
                 _uiEvent.send(LoginUiEvent.LoggedIn(token.getOrNull()!!))
                 _uiState.value = LoginUiState.Idle
             } else {

@@ -7,7 +7,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:animateLayoutChanges="true">
 
         <ImageButton
             android:id="@+id/bBack"
@@ -21,9 +22,9 @@
             app:layout_constraintBottom_toTopOf="@id/tvCreateAccount"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0"
-            app:layout_constraintVertical_bias="0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0"
             app:layout_constraintVertical_chainStyle="packed" />
 
         <TextView
@@ -144,7 +145,7 @@
             app:boxCornerRadiusBottomStart="24dp"
             app:boxCornerRadiusTopEnd="24dp"
             app:boxCornerRadiusTopStart="24dp"
-            app:layout_constraintBottom_toTopOf="@id/tilConfPassword"
+            app:layout_constraintBottom_toTopOf="@id/ivPasswordMatch"
             app:layout_constraintEnd_toEndOf="@id/tilUserName"
             app:layout_constraintStart_toStartOf="@id/tilUserName"
             app:layout_constraintTop_toBottomOf="@id/tilEmail"
@@ -157,12 +158,89 @@
                 android:inputType="textPassword" />
         </com.google.android.material.textfield.TextInputLayout>
 
+        <ImageView
+            android:id="@+id/ivPasswordMatch"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:src="@drawable/ic_check"
+            android:layout_marginTop="16dp"
+            app:layout_constraintBottom_toTopOf="@id/ivPasswordLength"
+            app:layout_constraintEnd_toStartOf="@id/tvPasswordMatch"
+            app:layout_constraintStart_toStartOf="@id/tilPassword"
+            app:layout_constraintTop_toBottomOf="@id/tilPassword"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+        <TextView
+            android:id="@+id/tvPasswordMatch"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="@string/password_requirement_one"
+            app:layout_constraintBottom_toBottomOf="@id/ivPasswordMatch"
+            app:layout_constraintEnd_toEndOf="@id/tilPassword"
+            app:layout_constraintStart_toEndOf="@id/ivPasswordMatch"
+            app:layout_constraintTop_toTopOf="@id/ivPasswordMatch" />
+
+        <ImageView
+            android:id="@+id/ivPasswordLength"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_marginTop="4dp"
+            android:src="@drawable/ic_check"
+            app:layout_constraintBottom_toTopOf="@id/ivPasswordHasNumber"
+            app:layout_constraintEnd_toStartOf="@id/tvPasswordLength"
+            app:layout_constraintStart_toStartOf="@id/ivPasswordMatch"
+            app:layout_constraintTop_toBottomOf="@id/ivPasswordMatch" />
+
+        <TextView
+            android:id="@+id/tvPasswordLength"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="@string/password_requirement_two"
+            app:layout_constraintBottom_toBottomOf="@id/ivPasswordLength"
+            app:layout_constraintEnd_toEndOf="@id/tilPassword"
+            app:layout_constraintStart_toEndOf="@id/ivPasswordLength"
+            app:layout_constraintTop_toTopOf="@id/ivPasswordLength" />
+
+        <ImageView
+            android:id="@+id/ivPasswordHasNumber"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_marginTop="4dp"
+            android:src="@drawable/ic_check"
+            app:layout_constraintBottom_toTopOf="@id/tilConfPassword"
+            app:layout_constraintEnd_toStartOf="@id/tvPasswordHasNumber"
+            app:layout_constraintStart_toStartOf="@id/tilPassword"
+            app:layout_constraintTop_toBottomOf="@id/ivPasswordLength" />
+
+        <TextView
+            android:id="@+id/tvPasswordHasNumber"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="@string/password_requirement_three"
+            app:layout_constraintBottom_toBottomOf="@id/ivPasswordHasNumber"
+            app:layout_constraintEnd_toEndOf="@id/tilPassword"
+            app:layout_constraintStart_toEndOf="@id/ivPasswordHasNumber"
+            app:layout_constraintTop_toTopOf="@id/ivPasswordHasNumber" />
+
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/gPasswordRequirements"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:visibility="gone"
+            app:constraint_referenced_ids="ivPasswordLength,ivPasswordHasNumber,ivPasswordMatch,
+            tvPasswordHasNumber, tvPasswordLength, tvPasswordMatch"
+            />
+
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tilConfPassword"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="16dp"
+            app:layout_goneMarginTop="8dp"
             android:hint="@string/conf_password_hint"
             app:boxCornerRadiusBottomEnd="24dp"
             app:boxCornerRadiusBottomStart="24dp"
@@ -171,7 +249,7 @@
             app:layout_constraintBottom_toTopOf="@id/bSignUp"
             app:layout_constraintEnd_toEndOf="@id/tilUserName"
             app:layout_constraintStart_toStartOf="@id/tilUserName"
-            app:layout_constraintTop_toBottomOf="@id/tilPassword"
+            app:layout_constraintTop_toBottomOf="@id/ivPasswordHasNumber"
             app:passwordToggleEnabled="true">
 
             <com.google.android.material.textfield.TextInputEditText
