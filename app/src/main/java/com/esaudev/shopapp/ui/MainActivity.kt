@@ -48,7 +48,7 @@ class MainActivity : AppCompatActivity() {
                 findNavController(R.id.fcvMainActivity).navInflater.inflate(R.navigation.main_nav_graph)
 
             if (userToken.isNotEmpty()) {
-                navGraph.setStartDestination(R.id.productListFragment)
+                navGraph.setStartDestination(R.id.homeFragment)
             } else {
                 navGraph.setStartDestination(R.id.logInFragment)
             }

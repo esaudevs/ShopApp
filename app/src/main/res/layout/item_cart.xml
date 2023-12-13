@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/ivImage"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="12dp"
+        android:scaleType="centerInside"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@drawable/ic_launcher_background" />
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="8dp"
+        android:textAppearance="?textAppearanceBodyLarge"
+        app:layout_constraintBottom_toTopOf="@id/tvPrice"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/ivImage"
+        app:layout_constraintTop_toTopOf="@id/ivImage"
+        app:layout_constraintVertical_chainStyle="packed"
+        tools:text="Product title" />
+
+    <TextView
+        android:id="@+id/tvPrice"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:textAppearance="?textAppearanceHeadline6"
+        app:layout_constraintBottom_toTopOf="@id/tvShipment"
+        app:layout_constraintEnd_toEndOf="@id/tvTitle"
+        app:layout_constraintStart_toStartOf="@id/tvTitle"
+        app:layout_constraintTop_toBottomOf="@id/tvTitle"
+        tools:text="$39.90" />
+
+    <TextView
+        android:id="@+id/tvShipment"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@id/ivImage"
+        app:layout_constraintEnd_toEndOf="@id/tvTitle"
+        app:layout_constraintStart_toStartOf="@id/tvTitle"
+        app:layout_constraintTop_toBottomOf="@id/tvPrice"
+        tools:text="Free shipment" />
+
+    <ImageButton
+        android:id="@+id/bRemove"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:padding="8dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/ic_remove"
+        android:background="?selectableItemBackgroundBorderless"
+        app:layout_constraintTop_toBottomOf="@id/ivImage"
+        app:layout_constraintStart_toStartOf="@id/ivImage"/>
+
+    <TextView
+        android:id="@+id/tvQuantity"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        tools:text="1"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="@id/bRemove"
+        app:layout_constraintEnd_toStartOf="@id/bAdd"
+        app:layout_constraintStart_toEndOf="@id/bRemove"
+        app:layout_constraintTop_toTopOf="@id/bRemove" />
+
+    <ImageButton
+        android:id="@+id/bAdd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:src="@drawable/ic_add"
+        android:background="?selectableItemBackgroundBorderless"
+        app:layout_constraintTop_toTopOf="@id/bRemove"
+        app:layout_constraintStart_toEndOf="@id/tvQuantity"
+        app:layout_constraintEnd_toStartOf="@id/bAdd"
+        app:layout_constraintBottom_toBottomOf="@id/bRemove"/>
+
+    <Button
+        android:id="@+id/bDelete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="@string/delete"
+        app:layout_constraintTop_toTopOf="@id/bRemove"
+        app:layout_constraintBottom_toBottomOf="@id/bRemove"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/bAdd"
+        app:layout_constraintHorizontal_bias="0"/>
+
+    <View
+        android:id="@+id/vDivider"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginHorizontal="16dp"
+        android:background="@color/ecommerce_gray_4"
+        app:layout_constraintVertical_bias="1"
+        app:layout_constraintTop_toBottomOf="@id/bRemove"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

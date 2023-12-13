@@ -22,4 +22,10 @@
     <string name="password_requirement_one">Passwords match</string>
     <string name="password_requirement_two">At least 8 characters</string>
     <string name="password_requirement_three">Passwords match</string>
+    <string name="products">Products</string>
+    <string name="cart">Cart</string>
+    <string name="subtotal">Subtotal</string>
+    <string name="proceed_to_payment">Proceed to payment</string>
+    <string name="add_products_to_your_cart">Add products to your cart</string>
+    <string name="delete">Delete</string>
 </resources>

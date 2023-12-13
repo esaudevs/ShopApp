@@ -4,4 +4,11 @@
     <color name="white">#FFFFFFFF</color>
     <color name="green">#2ecc71</color>
     <color name="red">#d24d57</color>
+
+    <color name="ecommerce_black">#060606</color>
+    <color name="ecommerce_gray_1">#3F3C3C</color>
+    <color name="ecommerce_gray_2">#5E5A5A</color>
+    <color name="ecommerce_gray_3">#ADADAD</color>
+    <color name="ecommerce_gray_4">#C4C4C4</color>
+    <color name="ecommerce_gray_5">#F3F3F3</color>
 </resources>
