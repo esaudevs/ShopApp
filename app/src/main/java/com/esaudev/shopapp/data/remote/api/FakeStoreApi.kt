@@ -1,6 +1,6 @@
 package com.esaudev.shopapp.data.remote.api
 
-import com.esaudev.courseessentials.data.remote.dto.product.ProductDto
+import com.esaudev.shopapp.data.remote.dto.product.ProductDto
 import com.esaudev.shopapp.data.remote.dto.auth.AuthDto
 import com.esaudev.shopapp.data.remote.dto.auth.SignUpDto
 import com.esaudev.shopapp.data.remote.dto.auth.TokenDto

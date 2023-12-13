@@ -1,6 +1,5 @@
-package com.esaudev.courseessentials.data.remote.dto.product
+package com.esaudev.shopapp.data.remote.dto.product
 
-import com.esaudev.shopapp.data.remote.dto.product.RatingDto
 import com.esaudev.shopapp.domain.model.Product
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass

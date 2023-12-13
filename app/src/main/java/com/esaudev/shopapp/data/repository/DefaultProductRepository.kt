@@ -2,8 +2,8 @@ package com.esaudev.shopapp.data.repository
 
 import com.esaudev.shopapp.data.local.room.dao.CartDao
 import com.esaudev.shopapp.data.local.room.model.CartItemEntity
-import com.esaudev.courseessentials.data.remote.dto.product.ProductDto
-import com.esaudev.courseessentials.data.remote.dto.product.toProduct
+import com.esaudev.shopapp.data.remote.dto.product.ProductDto
+import com.esaudev.shopapp.data.remote.dto.product.toProduct
 import com.esaudev.shopapp.domain.model.CartItem
 import com.esaudev.shopapp.domain.model.Product
 import com.esaudev.shopapp.data.remote.api.FakeStoreApi
