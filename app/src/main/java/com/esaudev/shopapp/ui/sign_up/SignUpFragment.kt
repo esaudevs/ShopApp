@@ -21,7 +21,6 @@ import com.esaudev.shopapp.domain.usecase.EMPTY_PASSWORD_ERROR
 import com.esaudev.shopapp.domain.usecase.EMPTY_USERNAME_ERROR
 import com.esaudev.shopapp.domain.usecase.PASSWORDS_NOT_MATCH_ERROR
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
